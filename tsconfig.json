@@ -1,0 +1,22 @@
+{
+    "compilerOptions":{
+        "baseUrl": "./",
+        "outDir":"/",
+        "target": "ES6",
+        "jsx":"preserve",
+        "lib":[
+            "DOM",
+            "DOM.Iterable",
+            "ES7"
+        ],
+        "allowJs": true,
+        "strictNullChecks":true,
+        "experimentalDecorators":true,
+        "module": "ESNext",
+        "moduleResolution": "node",
+        // 相当于webpack的alias
+        "paths": {}
+    },
+    "include": ["**/*"],
+    "exclude":["node_modules","dist"]
+}
