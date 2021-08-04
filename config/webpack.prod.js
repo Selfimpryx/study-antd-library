@@ -7,6 +7,7 @@ const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plug
 const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 
 const smp = new SpeedMeasurePlugin();
 
@@ -45,9 +46,7 @@ const getStyleLoaders = (cssOptions, preProcess) => {
 };
 
 module.exports = smp.wrap({
-  entry: {
-    index: path.join(__dirname, "../index.js"),
-  },
+  entry: path.join(__dirname, "../index.js"),
   output: {
     path: path.join(__dirname, "../dist"),
     filename: "[name].js",
@@ -58,6 +57,7 @@ module.exports = smp.wrap({
     rules: [
       {
         test: /\.js$/,
+        exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
@@ -68,6 +68,7 @@ module.exports = smp.wrap({
       },
       {
         test: /\.tsx?$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: "babel-loader",
@@ -135,8 +136,6 @@ module.exports = smp.wrap({
       }),
       new TerserPlugin({
         exclude: /node_modules/,
-        cache: true,
-        parallel: 4,
         terserOptions: {
           compress: {
             pure_funcs: ["console.log"],
@@ -144,6 +143,10 @@ module.exports = smp.wrap({
         },
       }),
     ],
+  },
+  stats: "errors-only",
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -154,5 +157,6 @@ module.exports = smp.wrap({
       template: path.join(__dirname, "../public/index.html"),
       filename: "index.html",
     }),
+    new FriendlyErrorsWebpackPlugin(),
   ],
 });
