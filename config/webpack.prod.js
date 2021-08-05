@@ -8,6 +8,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
+const EslintWebpackPlugin = require("eslint-webpack-plugin");
 
 const smp = new SpeedMeasurePlugin();
 
@@ -158,5 +159,13 @@ module.exports = smp.wrap({
       filename: "index.html",
     }),
     new FriendlyErrorsWebpackPlugin(),
+    new EslintWebpackPlugin({
+      // eslint options
+      extensions: ["js", "jsx", "ts", "tsx"],
+      formatter: require.resolve("eslint-formatter-pretty"),
+      eslintPath: require.resolve("eslint"),
+      // 仅对更改的文件操作
+      cache: true,
+    }),
   ],
 });
