@@ -40,7 +40,7 @@ type NativeButtonProps = {
   Omit<React.AnchorHtmlAttributes<any>, "type" | "onClick">;
 
 // 把所有的属性都变成可选的
-type ButtonProps = Partial<AnchorButtonProps & NativeButtonProps>;
+export type ButtonProps = Partial<AnchorButtonProps & NativeButtonProps>;
 
 const Button: React.FC<ButtonProps> = (props) => {
   // 将可能影响样式的属性获取出来 通过这些属性来设置样式

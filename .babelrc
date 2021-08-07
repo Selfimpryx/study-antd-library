@@ -1,9 +1,19 @@
 {
-  "presets": ["@babel/preset-react"],
+  "presets": ["@babel/preset-react", "@babel/preset-env"],
   "plugins": [
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-transform-runtime",
     "@babel/plugin-proposal-optional-chaining",
     "@babel/plugin-transform-modules-commonjs"
-  ]
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "@babel/plugin-proposal-class-properties",
+        ["babel-plugin-styled-components", { "displayName": true }],
+        "@babel/plugin-syntax-dynamic-import"
+      ],
+      "presets": ["@babel/preset-env", "@babel/preset-react","@babel/preset-typescript"]
+    }
+  }
 }
