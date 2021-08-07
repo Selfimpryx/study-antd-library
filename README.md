@@ -7,7 +7,7 @@ webpack@4.4 + typescript@4.3 + react@17+ +sass@1.3.7
 **介绍**
 
 webpack@4.4 + typescript@4.3 + react@17+ +sass@1.3.7 仿 antd 组件库的开发，完成组件的基本功能,webpack 的基本搭建,
-继承 prettier+commitlint+eslint 规范代码结构,学习组件开发的思想以及组件的分析与代码结构,样式结构的构建,做好单元测试等
+配置 prettier+commitlint+eslint 规范代码结构,学习组件开发的思想以及组件的分析与代码结构,样式结构的构建,做好单元测试等
 
 **测试**
 
