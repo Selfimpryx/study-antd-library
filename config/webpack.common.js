@@ -50,21 +50,37 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"],
-            plugins: ["@babel/plugin-transform-runtime"],
+        use: [
+          {
+            loader: "thread-loader",
+            options: {
+              workers: 3,
+            },
           },
-        },
+          {
+            loader: "babel-loader",
+            options: {
+              cacheDirectory: true,
+              presets: ["@babel/preset-env"],
+              plugins: ["@babel/plugin-transform-runtime"],
+            },
+          },
+        ],
       },
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: [
           {
+            loader: "thread-loader",
+            options: {
+              workers: 3,
+            },
+          },
+          {
             loader: "babel-loader",
             options: {
+              cacheDirectory: true,
               presets: [
                 "@babel/preset-env",
                 "@babel/preset-react",
@@ -108,6 +124,16 @@ module.exports = {
     ],
   },
   resolve: {
+    alias: {
+      react: path.join(
+        __dirname,
+        "../node_modules/react/umd/react.production.min.js"
+      ),
+      "react-dom": path.join(
+        __dirname,
+        "../node_modules/react-dom/umd/react-dom.production.min.js"
+      ),
+    },
     extensions: [".tsx", ".ts", ".js"],
   },
   plugins: [
@@ -118,6 +144,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "../public/index.html"),
       filename: "index.html",
+      minify: true,
     }),
     new EslintWebpackPlugin({
       // eslint options

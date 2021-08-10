@@ -33,6 +33,8 @@ const prodConfig = smp.wrap({
       }),
       new TerserPlugin({
         exclude: /node_modules/,
+        cache: true,
+        parallel: 4,
         terserOptions: {
           compress: {
             pure_funcs: ["console.log"],
