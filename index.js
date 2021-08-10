@@ -1,6 +1,7 @@
-import React from "react";
+import * as React from "react";
 import ReactDom from "react-dom";
 import Button from "./components/Button/index";
+import MyIcon from "./components/Icon/index";
 import "./styles/index.scss";
 
 ReactDom.render(
@@ -11,6 +12,7 @@ ReactDom.render(
     <Button size={"sm"}>点击</Button>
     <Button size={"lg"}>点击</Button>
     <Button disabled>失效</Button>
+    <MyIcon type={"icon-error"}></MyIcon>
   </div>,
   document.getElementById("root")
 );
