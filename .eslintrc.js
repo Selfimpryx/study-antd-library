@@ -6,7 +6,6 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier",
-    "react-hooks",
   ],
   plugins: ["import", "react-hooks"],
   overrides: [
@@ -18,6 +17,8 @@ module.exports = {
       },
       plugins: ["@typescript-eslint", "eslint-plugin-import-helpers"],
       rules: {
+        "@typescript-eslint/no-var-requires": 0,
+        "@typescript-eslint/no-explicit-any": ["off"],
         // TypeScript's `noFallthroughCasesInSwitch` option is more robust (#6906)
         "default-case": "off",
         // 'tsc' already handles this (https://github.com/typescript-eslint/typescript-eslint/issues/291)
@@ -135,7 +136,7 @@ module.exports = {
     "no-this-before-super": "warn",
     "no-throw-literal": "warn",
     "no-undef": "error",
-    "no-restricted-globals": ["error"].concat(restrictedGlobals),
+    "no-restricted-globals": ["error"],
     "no-unreachable": "warn",
     "no-unused-expressions": [
       "error",
@@ -216,5 +217,6 @@ module.exports = {
     "react/style-prop-object": "warn",
     // https://github.com/facebook/react/tree/master/packages/eslint-plugin-react-hooks
     "react-hooks/rules-of-hooks": "error",
+    "react/prop-types": 0,
   },
 };
