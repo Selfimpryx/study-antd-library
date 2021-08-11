@@ -1,7 +1,8 @@
-import * as React from "react";
+import React from "react";
 import ReactDom from "react-dom";
 import Button from "./components/Button/index";
 import MyIcon from "./components/Icon/index";
+import Alert from "./components/Alert";
 import "./styles/index.scss";
 
 ReactDom.render(
@@ -13,6 +14,15 @@ ReactDom.render(
     <Button size={"lg"}>点击</Button>
     <Button disabled>失效</Button>
     <MyIcon type={"icon-error"}></MyIcon>
+    {/* alert */}
+    <Alert
+      type={"success"}
+      showIcon
+      closeText={"点这里"}
+      closable
+      description={"副提示"}
+      message={"alert提示"}
+    ></Alert>
   </div>,
   document.getElementById("root")
 );

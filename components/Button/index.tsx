@@ -16,6 +16,9 @@ type ButtonSize = "large" | "middle" | "small" | undefined;
 
 const ButtonTypes = createTuple("primary", "dashed", "link", "default");
 type ButtonType = typeof ButtonTypes[number];
+// button的type属性
+const ButtonHTMLTypes = createTuple("submit","button","reset")
+type ButtonHTMLType = typeof ButtonHTMLTypes[number]
 
 // link 为a链接 按钮 否则为普通按钮
 interface baseButtonProps {
@@ -29,22 +32,30 @@ interface baseButtonProps {
 type AnchorButtonProps = {
   href: string;
   target?: string;
-  onClick?: React.MouseEventHandle<HTMLElement>;
+  onClick?: React.MouseEventHandler<HTMLElement>;
 } & baseButtonProps &
-  Omit<React.AnchorHtmlAttributes<any>, "type" | "onClick">; //将a标签的内 跟我们定义的属性重名的属性移除
+  Omit<React.AnchorHTMLAttributes<any>, "type" | "onClick">; //将a标签的内 跟我们定义的属性重名的属性移除
 
 //   按钮属性一样
 type NativeButtonProps = {
-  onClick?: React.MouseEventHandle<HTMLElement>;
+  htmlType?:ButtonHTMLType;
+  onClick?: React.MouseEventHandler<HTMLElement>;
 } & baseButtonProps &
-  Omit<React.AnchorHtmlAttributes<any>, "type" | "onClick">;
+  Omit<React.ButtonHTMLAttributes<any>, "type" | "onClick">;
 
 // 把所有的属性都变成可选的
 export type ButtonProps = Partial<AnchorButtonProps & NativeButtonProps>;
 
 const Button: React.FC<ButtonProps> = (props) => {
   // 将可能影响样式的属性获取出来 通过这些属性来设置样式
-  const { type, size, className, children, ...restProps } = props;
+  const {
+    type,
+    size,
+    className,
+    children,
+    htmlType = "button" as ButtonProps["htmlType"],
+    ...restProps
+  } = props;
 
   const handleClick = (
     e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>
@@ -55,7 +66,7 @@ const Button: React.FC<ButtonProps> = (props) => {
       e.preventDefault();
       return;
     }
-    (onClick as React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>)?.(e);
+    onClick?.(e);
   };
 
   const classes = classNames(
@@ -78,7 +89,7 @@ const Button: React.FC<ButtonProps> = (props) => {
   return (
     <button
       {...restProps}
-      type={type}
+      type={htmlType}
       className={classes}
       onClick={handleClick}
     >
