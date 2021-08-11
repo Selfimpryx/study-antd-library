@@ -1,22 +1,25 @@
 {
-    "compilerOptions":{
-        "baseUrl": "./",
-        "outDir":"/",
-        "target": "ES6",
-        "jsx":"react-jsx",
-        "lib":[
-            "DOM",
-            "DOM.Iterable",
-            "ES7"
-        ],
-        "allowJs": true,
-        "strictNullChecks":true,
-        "experimentalDecorators":true,
-        "module": "ESNext",
-        "moduleResolution": "node",
-        // 相当于webpack的alias
-        "paths": {}
-    },
-    "include": ["**/*"],
-    "exclude":["node_modules","dist"]
+  "compilerOptions": {
+    "baseUrl": "./",
+    "target": "es5",
+    "jsx": "react-jsx",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "noImplicitReturns":true,
+    "allowSyntheticDefaultImports":true,
+    "forceConsistentCasingInFileNames":true,
+    "isolatedModules":true,
+    "strict":true,
+    "declaration": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "skipLibCheck":true,
+    "noEmit":true,
+    // 相当于webpack的alias
+    "paths": {}
+  },
+  "include": ["**/*"],
+  "exclude": ["node_modules", "dist"]
 }

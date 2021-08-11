@@ -17,7 +17,6 @@ module.exports = {
       },
       plugins: ["@typescript-eslint", "eslint-plugin-import-helpers"],
       rules: {
-        "@typescript-eslint/no-var-requires": 0,
         "@typescript-eslint/no-explicit-any": ["off"],
         // TypeScript's `noFallthroughCasesInSwitch` option is more robust (#6906)
         "default-case": "off",
@@ -69,6 +68,7 @@ module.exports = {
     node: true,
   },
   rules: {
+    "@typescript-eslint/no-var-requires": 0,
     // http://eslint.org/docs/rules/
     "array-callback-return": "warn",
     "default-case": ["warn", { commentPattern: "^no default$" }],
