@@ -22,6 +22,9 @@ $green:   #52c41a !default;
 $teal:    #20c997 !default;
 $cyan:    #17a2b8 !default;
 
+// 透明
+$transparent :  transparent!default;
+
 // * 系统色板
 $primary:       $blue !default;
 $secondary:     $gray-600 !default;
@@ -295,3 +298,7 @@ $progress-bg:                       $gray-200 !default;
 $progress-border-radius:            $border-radius !default;
 $progress-bar-color:                $white !default;
 $progress-bar-transition:           width .6s ease !default;
+
+// alert
+$alert-margin-bottom:               1rem !default;
+$alert-icon-margin-right:           0.5rem !default;

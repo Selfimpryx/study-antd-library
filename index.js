@@ -23,6 +23,12 @@ ReactDom.render(
       description={"副提示"}
       message={"alert提示"}
     ></Alert>
+    <Alert
+      showIcon
+      closable
+      description={"副提示"}
+      message={"alert提示"}
+    ></Alert>
   </div>,
   document.getElementById("root")
 );

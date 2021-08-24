@@ -1,0 +1,60 @@
+@import './mixin.scss';
+
+.alert-box {
+    color: $black;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: $btn-padding-y $btn-padding-x;
+    box-sizing: border-box;
+    border-radius: $border-radius;
+    margin-bottom: $alert-margin-bottom;
+
+    .alert-icon{
+        margin-right: $alert-icon-margin-right;
+    }
+
+    .alert-content{
+        flex: 1;
+        .alert-message {
+            // color: $black;
+            @include alert-font-style($font-size-base, $black);
+            display: block;
+        }
+    
+        .alert-description {
+            @include alert-font-style($font-size-sm, $black);
+            line-height: $line-height-base;
+        }
+    }
+
+    .alert-close{
+        background: $transparent;
+        border:none;
+        outline: none;
+        cursor: pointer;
+        font-size: $font-size-sm;
+        .alert-close-text{
+            color: $gray-600;
+        }
+    }
+    
+}
+
+.alert-success {
+    @include alert-type-style($teal, $green)
+}
+
+.alert-info {
+    @include alert-type-style($cyan, $blue)
+}
+
+.alert-warning {
+    @include alert-type-style($yellow, $orange)
+}
+
+.alert-error {
+    @include alert-type-style($pink, $red)
+}

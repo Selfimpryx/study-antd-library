@@ -68,6 +68,7 @@ const Alert: React.FC<IAlertProps> = ({
   };
 
   const alertClassName = classNames(
+    'alert-box',
     `alert-${type}`,
     {
       "alert-description": !!description,
@@ -77,7 +78,7 @@ const Alert: React.FC<IAlertProps> = ({
   return (
     <div className={alertClassName}>
       {showIcon ? renderIcon() : null}
-      <div className={"alert-count"}>
+      <div className={"alert-content"}>
         <div className={"alert-message"}>{message}</div>
         <div className={"alert-description"}>{description}</div>
       </div>
