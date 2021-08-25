@@ -24,10 +24,10 @@ export interface IAlertProps {
 }
 
 const iconMap = {
-  success: <MyIcon type={"icon-chenggong"}></MyIcon>,
-  info: <MyIcon type={"icon-chanpinxinxi"}></MyIcon>,
-  warning: <MyIcon type={"icon-jinggao"}></MyIcon>,
-  error: <MyIcon type={"icon-icon-test"}></MyIcon>,
+  success: <MyIcon data-testid='icon-box' type={"icon-chenggong"}></MyIcon>,
+  info: <MyIcon data-testid='icon-box' type={"icon-chanpinxinxi"}></MyIcon>,
+  warning: <MyIcon data-testid='icon-box' type={"icon-jinggao"}></MyIcon>,
+  error: <MyIcon data-testid='icon-box'  type={"icon-icon-test"}></MyIcon>,
 };
 
 const Alert: React.FC<IAlertProps> = ({
@@ -64,7 +64,7 @@ const Alert: React.FC<IAlertProps> = ({
   const renderIcon = () => {
     const iconType = iconMap[type];
     // 克隆生成一个新的组件
-    return React.cloneElement(iconType, { className: "alert-icon" });
+    return React.cloneElement(iconType, { className: "alert-icon",'data-testid':'icon-box'});
   };
 
   const alertClassName = classNames(
