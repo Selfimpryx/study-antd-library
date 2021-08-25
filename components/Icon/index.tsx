@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import "./icon.scss";
+
 
 interface IconBaseProps {
   className?: string;
