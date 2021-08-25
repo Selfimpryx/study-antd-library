@@ -37,12 +37,8 @@ jest-dom 断言整理
 - toHaveDisplayValue(value): 是否具有指定的显示值
 - toBeChecked: 元素是否被选中
 - toHaveErrorMessage: 是否有错误消息
--
-
-**目前已完成组件:**
+- **目前已完成组件:**
 
 [button](./components/Button/index.tsx)
 
 **将持续更新完善 webpack 的配置优化,antd 其他组件的开发.........**
-
-test react test jest-dom

@@ -38,6 +38,7 @@ const prodConfig = smp.wrap({
         terserOptions: {
           compress: {
             pure_funcs: ["console.log"],
+            drop_console: true,
           },
         },
       }),
